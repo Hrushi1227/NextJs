@@ -49,7 +49,7 @@ const SearchResultPage = async ({
           {properties.length == 0 ? (
             <p>No Search Result</p>
           ) : (
-            <div className="grid grid-cols-1 md:gird-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {properties.map((property) => {
                 return <PropertyCard property={property} />;
               })}
