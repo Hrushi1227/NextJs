@@ -9,17 +9,23 @@ const SavedPropertiesPage = async () => {
   const { bookmarks } = await User.findById(userId).populate("bookmarks");
   console.log("Check bookmarks122", bookmarks);
 
-  return <section className="px-4 py-6">
-    <div className="container lg:container m-auto px-4 py-6"></div>
-    <h1 className="text-2xl mb-4">Saved Properties</h1>
-    {bookmarks.length === 0 ? (<p>No saved property </p>): (
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {bookmarks.map((propertydata)=>{
-          console.log("Check RSG Property propertydata",propertydata)
-          return <PropertyCard property={propertydata}/>
-        })}
-      </div>
-    )}
-  </section>;
+  return (
+    <section className="px-4 py-6">
+      <div className="container lg:container m-auto px-4 py-6"></div>
+      <h1 className="text-2xl mb-4">Saved Properties</h1>
+      {bookmarks.length === 0 ? (
+        <p>No saved property </p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {bookmarks.map((propertydata) => {
+            console.log("Check RSG Property propertydata", propertydata);
+            return (
+              <PropertyCard key={propertydata._id} property={propertydata} />
+            );
+          })}
+        </div>
+      )}
+    </section>
+  );
 };
 export default SavedPropertiesPage;
