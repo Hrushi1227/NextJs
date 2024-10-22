@@ -18,7 +18,6 @@ const SavedPropertiesPage = async () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {bookmarks.map((propertydata) => {
-            console.log("Check RSG Property propertydata", propertydata);
             return (
               <PropertyCard key={propertydata._id} property={propertydata} />
             );
