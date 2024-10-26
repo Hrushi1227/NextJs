@@ -35,7 +35,6 @@ const PropertyMap = ({ property }) => {
         }
 
         const { lat, lng } = res.results[0].geometry.location;
-        // console.log("Check RSG ", res.results[0].geometry.location);
         setLat(lat);
         setLng(lng);
         setViewport({
@@ -44,7 +43,6 @@ const PropertyMap = ({ property }) => {
           longitude: lng,
         });
       } catch (error) {
-        console.log(error);
         setGeocodeError(true);
       } finally {
         setLoading(false);
