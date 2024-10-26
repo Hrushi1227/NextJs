@@ -2,11 +2,16 @@ import PropertyCard from "@/components/PropertyCard";
 // import properties from "@/properties.json";
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
+import Pagination from "@/components/Pagination";
 
-const PropertiesPage = async () => {
+const PropertiesPage = async ({ searchParams: { page = 1, pageSize = 3 } }) => {
   await connectDB();
 
-  const properties = await Property.find({}).lean();
+  const skip = (page - 1) * pageSize;
+  const total = await Property.countDocuments({});
+  const properties = await Property.find({}).skip(skip).limit(pageSize);
+
+  const showPagination = total > pageSize;
   // console.log("Check Property", properties);
   return (
     <section>
@@ -25,6 +30,13 @@ const PropertiesPage = async () => {
                 );
               })}
             </div>
+          )}
+          {showPagination && (
+            <Pagination
+              page={parseInt(page)}
+              pageSize={parseInt(pageSize)}
+              totalItems={total}
+            />
           )}
         </div>
       </div>
