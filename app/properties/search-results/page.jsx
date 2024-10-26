@@ -29,7 +29,7 @@ const SearchResultPage = async ({
 
   const propertiesQueryResults = await Property.find(query).lean();
   const properties = convertToSerializableObject(propertiesQueryResults);
-  console.log("Check ", properties);
+  // console.log("Check ", properties);
   return (
     <>
       <section className="bg-blue-700 py-4">

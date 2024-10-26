@@ -48,7 +48,6 @@ async function addProperty(formData) {
       phone: formData.get("seller_info.phone"),
     },
   };
-  //   console.log("Property Data from form", propertyData);
 
   const imageUrls = [];
   for (const imageFile of images) {
